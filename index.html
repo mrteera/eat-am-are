@@ -3,15 +3,17 @@
 <head>
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./vendor/animations.css">
 </head>
 <body>
-	<section ng-view></section>	
+	<section ng-view class="view-animate"></section>	
 
 	<script src="./vendor/angular.min.js"></script>
 	<script src="./vendor/angular-route.min.js"></script>
 	<script src="./vendor/angular-webstorage.js"></script>
+	<script src="./vendor/angular-animate.min.js"></script>
 	<script>
-		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule']);
+		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule', 'ngAnimate']);
 		var controllers = {};
 	
 		app.config(function($routeProvider){
@@ -51,7 +53,7 @@
 				$scope.meals = data;
 			});
 			$scope.sort = 'name';
-
+			
 			if(webStorage.local.get('recommendsLS') === null){
 				recommendService.getRecommends().success(function(data){
 					$scope.recommends = data;
@@ -70,8 +72,7 @@
 				});
 			}else{
 				$scope.recommends = webStorage.local.get('recommendsLS');
-			}
-			
+			}	
 
 			$scope.addRecommend = function(){
 				$scope.recommends.push(

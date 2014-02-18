@@ -10,9 +10,10 @@
 
 	<script src="./vendor/angular.min.js"></script>
 	<script src="./vendor/angular-route.min.js"></script>
+	<script src="./vendor/angular-webstorage.js"></script>
 	<script src="./vendor/angular-animate.min.js"></script>
 	<script>
-		var app = angular.module('eatamareApp', ['ngRoute', 'ngAnimate']);
+		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule', 'ngAnimate']);
 		var controllers = {};
 	
 		app.config(function($routeProvider){
@@ -47,24 +48,37 @@
 			};
 		});
 
-		controllers.MealCtrl = function($scope, mealService, recommendService){
+		controllers.MealCtrl = function($scope, mealService, recommendService, webStorage){
 			mealService.getMeals().success(function(data){
 				$scope.meals = data;
 			});
 			$scope.sort = 'name';
-			recommendService.getRecommends().success(function(data){
-				$scope.recommends = data;
-			});
+			
+			if(webStorage.local.get('recommendsLS') === null){
+				recommendService.getRecommends().success(function(data){
+					$scope.recommends = data;
+					webStorage.local.add('recommendsLS', data);
+				});
+			}else{
+				$scope.recommends = webStorage.local.get('recommendsLS');
+			}
 		}
 
-		controllers.RecommendCtrl = function($scope, recommendService){
-			recommendService.getRecommends().success(function(data){
-				$scope.recommends = data;
-			});
+		controllers.RecommendCtrl = function($scope, recommendService, webStorage){
+			if(webStorage.local.get('recommendsLS') === null){
+				recommendService.getRecommends().success(function(data){
+					$scope.recommends = data;
+					webStorage.local.add('recommendsLS', data);
+				});
+			}else{
+				$scope.recommends = webStorage.local.get('recommendsLS');
+			}	
+
 			$scope.addRecommend = function(){
 				$scope.recommends.push(
 					{email:$scope.his.email, name:$scope.meal.name, price:$scope.meal.price}
 				);
+				webStorage.local.add('recommendsLS', $scope.recommends);
 				$scope.his.email = '';
 				$scope.meal.name = '';
 				$scope.meal.price = '';

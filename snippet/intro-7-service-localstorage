@@ -70,8 +70,7 @@
 				});
 			}else{
 				$scope.recommends = webStorage.local.get('recommendsLS');
-			}
-			
+			}	
 
 			$scope.addRecommend = function(){
 				$scope.recommends.push(
