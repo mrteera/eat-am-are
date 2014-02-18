@@ -3,25 +3,23 @@
 <head>
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./custom/style.css">
 </head>
 <body>
 	<h1>Eat Am Are</h1>
-	<h2>You Are What You Eat</h2>
+	<h2>You Are What You Eat <span>{{moment}}</span></h2>
 
 	<input type="text" ng-model="moment" placeholder="What 's in your mind?"> and you hungry right?
 
 	<main ng-controller="MealCtrl">
 
-		<header>
-			<h3>{{moment}}</h3>
-		</header>
 		<section>
 			<section id="meals">
 				<header>
-					order by name:
+					Order by name:
 					<a href="" ng-click="sort='name';reverse=false">A-z</a>
 					<a href="" ng-click="sort='name';reverse=!false">Z-a</a>
-					order by price:
+					Order by price:
 					<a href="" ng-click="sort='price';reverse=false">0-10</a>
 					<a href="" ng-click="sort='price';reverse=!false">10-0</a>
 				</header>
@@ -37,7 +35,7 @@
 
 	</main>
 
-	<script src="./vendor/angular.min.js"></script>
+	<script src="./vendor/js/angular.min.js"></script>
 	<script>
 		var app = angular.module('eatamareApp', []);
 		var controllers = {};

@@ -1,14 +1,10 @@
 <h1>Eat Am Are</h1>
-<h2>You Are What You Eat</h2>
+<h2>You Are What You Eat <span>{{moment}}</span></h2>
 
 <input type="text" ng-model="moment" placeholder="What 's in your mind?" autofocus> and you hungry right?
 
 <main ng-controller="MealCtrl">
 
-	<header>
-		<h3 ng-if="moment == ''">What 's in your mind?</h3>
-		<h3 ng-if="moment != ''">{{moment}}</h3>
-	</header>
 	<section>
 		<section id="meals">
 			<header>

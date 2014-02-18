@@ -3,13 +3,14 @@
 <head>
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./custom/style.css">
 </head>
 <body>
 	<section ng-view></section>	
 
-	<script src="./vendor/angular.min.js"></script>
-	<script src="./vendor/angular-route.min.js"></script>
-	<script src="./vendor/angular-webstorage.js"></script>
+	<script src="./vendor/js/angular.min.js"></script>
+	<script src="./vendor/js/angular-route.min.js"></script>
+	<script src="./vendor/js/angular-webstorage.js"></script>
 	<script>
 		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule']);
 		var controllers = {};

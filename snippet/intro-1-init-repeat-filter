@@ -3,18 +3,16 @@
 <head>
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./custom/style.css">
 </head>
 <body>
 	<h1>Eat Am Are</h1>
-	<h2>You Are What You Eat</h2>
+	<h2>You Are What You Eat <span>{{moment}}</span></h2>
 
 	<input type="text" ng-model="moment" placeholder="What 's in your mind?"> and you hungry right?
 
 	<main>
 
-		<header>
-			<h3>{{moment}}</h3>
-		</header>
 		<section>
 			<section id="meals" ng-init="meals=['Rice congee','Omelet on rice','Thai fried rice','Chicken rice']">
 				<figure ng-repeat="meal in meals | filter:moment">
@@ -28,6 +26,6 @@
 
 	</main>
 
-	<script src="./vendor/angular.min.js"></script>
+	<script src="./vendor/js/angular.min.js"></script>
 </body>
 </html>

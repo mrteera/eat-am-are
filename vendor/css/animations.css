@@ -7,9 +7,9 @@
 	overflow:hidden;
 }
 
-.view-animate {
+/*.view-animate {
 	padding:10px;
-}
+}*/
 
 .view-animate.ng-enter, .view-animate.ng-leave {
 	-webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.4s;

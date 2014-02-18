@@ -1,0 +1,85 @@
+@import url(http://reset5.googlecode.com/hg/reset.min.css);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+body{
+	width:90%;
+	position:relative;
+	margin:20px auto;
+	padding:10px;
+	font-family:Lato;
+	font-weight:300;
+	font-size:1.5em;
+	color:#2c3e50;
+}
+
+h2 > span{
+	margin-left: 10px;
+	color:#f39c12;
+}
+
+input[type="text"]{
+	display:block;
+	width:300px;
+	height:30px;
+	margin:20px 0;
+	padding:5px;
+	font-family:Lato;
+	font-size:1em;   
+}
+
+a{
+	text-decoration:none;
+	color:#e74c3c;
+	margin:5px 0; 
+}
+a:hover{
+	color:#3498db;
+}
+
+figure{
+	margin-left:30px; 
+}
+
+figcaption{
+	font-size:0.9em;
+}
+
+h4{
+	margin:20px;
+	color:#f39c12;
+}
+
+article{
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+ul{
+	margin:20px 50px;
+}
+
+li{
+	padding-bottom:10px;
+}
+
+
+button{
+	display:block;
+	width:200px;
+	height:30px;
+	padding:10px;
+	font-family:Lato;
+	font-size:0.8em;   
+	background-color:#3498db;
+	border:0;
+	color:white;
+	cursor:pointer;
+}
+
+footer {
+	margin:20px 0; 
+}
+
+footer > h3{
+	margin:20px 0; 
+}
