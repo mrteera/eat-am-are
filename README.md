@@ -26,5 +26,4 @@ An introduction of AngularJS and AngularDart by sample small projects
 
 #### Author
 Suthat Ronglong
-- M.Sc.Computer Science (SIT KMUTT, Bangkok Thailand)
 - suthat@do.in.th
