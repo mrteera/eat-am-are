@@ -3,6 +3,7 @@
 <head>
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="./custom/style.css">
 	<link rel="stylesheet" href="./vendor/css/animations.css">
 </head>
 <body>
@@ -35,7 +36,7 @@
 		app.service('mealService', function($http){
 			return {
 				getMeals: function() {
-					return $http.get('/eat-am-are/data/sample-meals.json');
+					return $http.get('/eat-am-are/angularjs/demo/sample-meals.json');
 				}
 			};
 		});
@@ -43,7 +44,7 @@
 		app.service('recommendService', function($http){
 			return {
 				getRecommends: function() {
-					return $http.get('/eat-am-are/data/sample-recommends.json');
+					return $http.get('/eat-am-are/angularjs/demo/sample-recommends.json');
 				}
 			};
 		});

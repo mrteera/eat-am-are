@@ -33,7 +33,7 @@
 		app.factory('mealFactory', function($http){
 			var factoryObject = {};
 			factoryObject.getMeals = function() {
-				return $http.get('/eat-am-are/data/sample-meals.json');
+				return $http.get('/eat-am-are/angularjs/demo/sample-meals.json');
 			}
 			return factoryObject;
 		});
@@ -41,7 +41,7 @@
 		app.factory('recommendFactory', function($http){
 			var factoryObject = {};
 			factoryObject.getRecommends = function() {
-				return $http.get('/eat-am-are/data/sample-recommends.json');
+				return $http.get('/eat-am-are/angularjs/demo/sample-recommends.json');
 			}
 			return factoryObject;
 		});

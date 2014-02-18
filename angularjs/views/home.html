@@ -1,7 +1,7 @@
 <h1>Eat Am Are</h1>
 <h2>You Are What You Eat <span>{{moment}}</span></h2>
 
-<input type="text" ng-model="moment" placeholder="What 's in your mind?" autofocus> and you hungry right?
+<input type="text" ng-model="moment" placeholder="What 's in your mind?" autofocus style="display:inline;"> and you hungry right?
 
 <main ng-controller="MealCtrl">
 
@@ -9,10 +9,10 @@
 		<section id="meals">
 			<header>
 				Order by name:
-				<a href="" ng-click="sort='name';reverse=false">A-z</a>
+				<a href="" ng-click="sort='name';reverse=false">A-z</a> - 
 				<a href="" ng-click="sort='name';reverse=!false">Z-a</a>
 				Order by price:
-				<a href="" ng-click="sort='price';reverse=false">0-10</a>
+				<a href="" ng-click="sort='price';reverse=false">0-10</a> - 
 				<a href="" ng-click="sort='price';reverse=!false">10-0</a>
 			</header>
 			<figure ng-repeat="meal in meals | filter:moment | orderBy:sort:reverse">

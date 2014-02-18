@@ -4,15 +4,17 @@
 	<title>You Are What You Eat | Eat-Am-Are</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./custom/style.css">
+	<link rel="stylesheet" href="./vendor/css/animations.css">
 </head>
 <body>
-	<section ng-view></section>	
+	<section ng-view class="view-animate"></section>	
 
 	<script src="./vendor/js/angular.min.js"></script>
 	<script src="./vendor/js/angular-route.min.js"></script>
 	<script src="./vendor/js/angular-webstorage.js"></script>
+	<script src="./vendor/js/angular-animate.min.js"></script>
 	<script>
-		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule']);
+		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule', 'ngAnimate']);
 		var controllers = {};
 	
 		app.config(function($routeProvider){
@@ -34,7 +36,7 @@
 		app.service('mealService', function($http){
 			return {
 				getMeals: function() {
-					return $http.get('/eat-am-are/data/sample-meals.json');
+					return $http.get('/eat-am-are/angularjs/demo/sample-meals.json');
 				}
 			};
 		});
@@ -42,7 +44,7 @@
 		app.service('recommendService', function($http){
 			return {
 				getRecommends: function() {
-					return $http.get('/eat-am-are/data/sample-recommends.json');
+					return $http.get('/eat-am-are/angularjs/demo/sample-recommends.json');
 				}
 			};
 		});
@@ -52,7 +54,7 @@
 				$scope.meals = data;
 			});
 			$scope.sort = 'name';
-
+			
 			if(webStorage.local.get('recommendsLS') === null){
 				recommendService.getRecommends().success(function(data){
 					$scope.recommends = data;
