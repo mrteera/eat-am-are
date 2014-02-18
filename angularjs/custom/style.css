@@ -38,9 +38,17 @@ a:hover{
 
 figure{
 	margin-left:30px; 
+	clear:both;
+}
+
+figure > img{
+	float:left;
+	margin-top:10px; 
+	margin-right:10px;
 }
 
 figcaption{
+	padding-top:10px; 
 	font-size:0.9em;
 }
 

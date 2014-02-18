@@ -7,7 +7,7 @@
 
 	<section>
 		<section id="meals">
-			<header>
+			<header style="margin-bottom:10px;">
 				Order by name:
 				<a href="" ng-click="sort='name';reverse=false">A-z</a> - 
 				<a href="" ng-click="sort='name';reverse=!false">Z-a</a>
@@ -16,13 +16,14 @@
 				<a href="" ng-click="sort='price';reverse=!false">10-0</a>
 			</header>
 			<figure ng-repeat="meal in meals | filter:moment | orderBy:sort:reverse">
-				<img src="" alt="">
+				<img ng-src="http://localhost/eat-am-are/angularjs/custom/img/{{meal.image}}" alt="">
 				<figcaption>
 					<a href="#lookup/happy-meal">{{meal.name}}</a><br>
 					{{meal.price}}Baht
 				</figcaption>
 			</figure>
 		</section>
+		<div style="clear:both;"></div>
 	</section>
 	<footer>
 		<h3>Recommended by people</h3>

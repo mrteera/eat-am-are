@@ -16,7 +16,7 @@
 	<script>
 		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule', 'ngAnimate']);
 		var controllers = {};
-	
+
 		app.config(function($routeProvider){
 			$routeProvider
 				.when('/',{
@@ -54,7 +54,7 @@
 				$scope.meals = data;
 			});
 			$scope.sort = 'name';
-			
+
 			if(webStorage.local.get('recommendsLS') === null){
 				recommendService.getRecommends().success(function(data){
 					$scope.recommends = data;
