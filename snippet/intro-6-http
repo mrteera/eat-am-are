@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="eatamareApp">
+<head>
+	<title>You Are What You Eat | Eat-Am-Are</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<section ng-view></section>	
+
+	<script src="./vendor/angular.min.js"></script>
+	<script src="./vendor/angular-route.min.js"></script>
+	<script>
+		var app = angular.module('eatamareApp', ['ngRoute']);
+		var controllers = {};
+	
+		app.config(function($routeProvider){
+			$routeProvider
+				.when('/',{
+					controller: 'MealCtrl',
+					templateUrl: 'views/home.html'
+				}).when('/lookup/:mealSlug', {
+					controller: 'MealCtrl',
+					templateUrl: 'views/lookup.html'
+				}).when('/recommend', {
+					controller: 'RecommendCtrl',
+					templateUrl: 'views/recommend.html'	
+				}).otherwise({
+					redirectTo: '/'
+				});
+		});		
+
+		app.factory('mealFactory', function($http){
+			var factoryObject = {};
+			factoryObject.getMeals = function() {
+				return $http.get('/eat-am-are/data/sample-meals.json');
+			}
+			return factoryObject;
+		});
+
+		app.factory('recommendFactory', function($http){
+			var factoryObject = {};
+			factoryObject.getRecommends = function() {
+				return $http.get('/eat-am-are/data/sample-recommends.json');
+			}
+			return factoryObject;
+		});
+
+		controllers.MealCtrl = function($scope, mealFactory, recommendFactory){
+			mealFactory.getMeals().success(function(data){
+				$scope.meals = data;
+			});
+			$scope.sort = 'name';
+			recommendFactory.getRecommends().success(function(data){
+				$scope.recommends = data;
+			});
+		}
+
+		controllers.RecommendCtrl = function($scope, recommendFactory){
+			recommendFactory.getRecommends().success(function(data){
+				$scope.recommends = data;
+			});
+			$scope.addRecommend = function(){
+				$scope.recommends.push(
+					{email:$scope.his.email, name:$scope.meal.name, price:$scope.meal.price}
+				);
+				$scope.his.email = '';
+				$scope.meal.name = '';
+				$scope.meal.price = '';
+			}
+		}
+		app.controller(controllers);
+	</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+[
+	{"email":"johndoe@example.com", "name":"Tom yum soup", "price":100},
+	{"email":"janedoe@example.com", "name":"Pad thai", "price":50},
+	{"email":"johnsmith@example.com", "name":"Larp", "price":20},
+	{"email":"janesmith@example.com", "name":"Papaya pokpok", "price":25}
+]

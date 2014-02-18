@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="eatamareApp">
+<head>
+	<title>You Are What You Eat | Eat-Am-Are</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Eat Am Are</h1>
+	<h2>You Are What You Eat</h2>
+
+	<input type="text" ng-model="moment" placeholder="What 's in your mind?"> and you hungry right?
+
+	<main ng-controller="MealCtrl">
+
+		<header>
+			<h3>{{moment}}</h3>
+		</header>
+		<section>
+			<section id="meals">
+				<header>
+					order by name:
+					<a href="" ng-click="sort='name';reverse=false">A-z</a>
+					<a href="" ng-click="sort='name';reverse=!false">Z-a</a>
+					order by price:
+					<a href="" ng-click="sort='price';reverse=false">0-10</a>
+					<a href="" ng-click="sort='price';reverse=!false">10-0</a>
+				</header>
+				<figure ng-repeat="meal in meals | filter:moment | orderBy:sort:reverse">
+					<img src="" alt="">
+					<figcaption>
+						{{meal.name}}<br>
+						{{meal.price}}Baht
+					</figcaption>
+				</figure>
+			</section>
+		</section>
+
+	</main>
+
+	<script src="./vendor/angular.min.js"></script>
+	<script>
+		var app = angular.module('eatamareApp', []);
+		var controllers = {};
+		
+		controllers.MealCtrl = function($scope){
+			$scope.meals = [
+				{"id":1, "name":"Rice congee", "price":30},
+				{"id":2, "name":"Omelet on rice", "price":20},
+				{"id":3, "name":"Thai fried rice", "price":35},
+				{"id":4, "name":"Chicken rice", "price":40}				
+			];
+			$scope.sort = 'name';
+		}
+		app.controller(controllers);
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="eatamareApp">
+<head>
+	<title>You Are What You Eat | Eat-Am-Are</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<section ng-view></section>	
+
+	<script src="./vendor/angular.min.js"></script>
+	<script src="./vendor/angular-route.min.js"></script>
+	<script src="./vendor/angular-webstorage.js"></script>
+	<script>
+		var app = angular.module('eatamareApp', ['ngRoute', 'webStorageModule']);
+		var controllers = {};
+	
+		app.config(function($routeProvider){
+			$routeProvider
+				.when('/',{
+					controller: 'MealCtrl',
+					templateUrl: 'views/home.html'
+				}).when('/lookup/:mealSlug', {
+					controller: 'MealCtrl',
+					templateUrl: 'views/lookup.html'
+				}).when('/recommend', {
+					controller: 'RecommendCtrl',
+					templateUrl: 'views/recommend.html'	
+				}).otherwise({
+					redirectTo: '/'
+				});
+		});		
+
+		app.service('mealService', function($http){
+			return {
+				getMeals: function() {
+					return $http.get('/eat-am-are/data/sample-meals.json');
+				}
+			};
+		});
+
+		app.service('recommendService', function($http){
+			return {
+				getRecommends: function() {
+					return $http.get('/eat-am-are/data/sample-recommends.json');
+				}
+			};
+		});
+
+		controllers.MealCtrl = function($scope, mealService, recommendService, webStorage){
+			mealService.getMeals().success(function(data){
+				$scope.meals = data;
+			});
+			$scope.sort = 'name';
+
+			if(webStorage.local.get('recommendsLS') === null){
+				recommendService.getRecommends().success(function(data){
+					$scope.recommends = data;
+					webStorage.local.add('recommendsLS', data);
+				});
+			}else{
+				$scope.recommends = webStorage.local.get('recommendsLS');
+			}
+		}
+
+		controllers.RecommendCtrl = function($scope, recommendService, webStorage){
+			if(webStorage.local.get('recommendsLS') === null){
+				recommendService.getRecommends().success(function(data){
+					$scope.recommends = data;
+					webStorage.local.add('recommendsLS', data);
+				});
+			}else{
+				$scope.recommends = webStorage.local.get('recommendsLS');
+			}
+			
+
+			$scope.addRecommend = function(){
+				$scope.recommends.push(
+					{email:$scope.his.email, name:$scope.meal.name, price:$scope.meal.price}
+				);
+				webStorage.local.add('recommendsLS', $scope.recommends);
+				$scope.his.email = '';
+				$scope.meal.name = '';
+				$scope.meal.price = '';
+			}
+		}
+		app.controller(controllers);
+	</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+[
+	{"id":1, "name":"Rice congee", "price":30},
+	{"id":2, "name":"Omelet on rice", "price":20},
+	{"id":3, "name":"Thai fried rice", "price":35},
+	{"id":4, "name":"Chicken rice", "price":40}
+]

@@ -1,0 +1,41 @@
+<h1>Eat Am Are</h1>
+<h2>You Are What You Eat</h2>
+
+<input type="text" ng-model="moment" placeholder="What 's in your mind?" autofocus> and you hungry right?
+
+<main ng-controller="MealCtrl">
+
+	<header>
+		<h3 ng-if="moment == ''">What 's in your mind?</h3>
+		<h3 ng-if="moment != ''">{{moment}}</h3>
+	</header>
+	<section>
+		<section id="meals">
+			<header>
+				Order by name:
+				<a href="" ng-click="sort='name';reverse=false">A-z</a>
+				<a href="" ng-click="sort='name';reverse=!false">Z-a</a>
+				Order by price:
+				<a href="" ng-click="sort='price';reverse=false">0-10</a>
+				<a href="" ng-click="sort='price';reverse=!false">10-0</a>
+			</header>
+			<figure ng-repeat="meal in meals | filter:moment | orderBy:sort:reverse">
+				<img src="" alt="">
+				<figcaption>
+					<a href="#lookup/happy-meal">{{meal.name}}</a><br>
+					{{meal.price}}Baht
+				</figcaption>
+			</figure>
+		</section>
+	</section>
+	<footer>
+		<h3>Recommended by people</h3>
+		<ul>
+			<li ng-repeat="meal in recommends">
+				By {{meal.email}} - {{meal.name}} ({{meal.price}}Baht)
+			</li>
+		</ul>
+		<a href="#recommend">Give us your recommend</a>
+	</footer>
+
+</main>

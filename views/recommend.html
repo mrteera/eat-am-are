@@ -1,0 +1,27 @@
+<h1>Eat Am Are</h1>
+<h2>You Are What You Eat</h2>
+
+<main ng-controller="RecommendCtrl">
+
+	<header>
+		<h4>Current recommends</h4>
+		<ul>
+			<li ng-repeat="meal in recommends">
+				By {{meal.email}} - {{meal.name}} ({{meal.price}}Baht)
+			</li>
+		</ul>
+	</header>
+	<section>
+		<h3>Recommend your meal</h3>
+		<section id="recommend-box">
+			<input type="text" ng-model="his.email" placeholder="Enter your e-mail address"><br>
+			<input type="text" ng-model="meal.name" placeholder="Enter meal name"><br>
+			<input type="text" ng-model="meal.price" placeholder="Enter your meal price"><br>
+			<button ng-click="addRecommend()">Recommend</button>
+		</section>
+	</section>
+	<footer>
+		<p><a href="#home">Home</a></p>
+	</footer>
+
+</main>
