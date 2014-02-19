@@ -37,8 +37,10 @@ a:hover{
 }
 
 figure{
-	margin-left:30px; 
-	clear:both;
+	width:33.33%;
+	margin:10px 0;
+	padding-bottom:10px;
+	float:left;
 }
 
 figure > img{

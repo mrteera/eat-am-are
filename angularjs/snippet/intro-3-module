@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="eatamareApp">
 <head>
-	<title>You Are What You Eat | Eat-Am-Are</title>
+	<title>Eat Am Are - AngularJS</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./custom/style.css">
 </head>
 <body>
 	<h1>Eat Am Are</h1>
-	<h2>You Are What You Eat <span>{{moment}}</span></h2>
+	<h2>Filter: <span>{{moment}}</span></h2>
 
-	<input type="text" ng-model="moment" placeholder="What 's in your mind?"> and you hungry right?
+	<input type="text" ng-model="moment" placeholder="What 's in your mind?" autofocus>
 
 	<main ng-controller="MealCtrl">
 

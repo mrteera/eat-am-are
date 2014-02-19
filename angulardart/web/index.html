@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<!-- ng-app is root scope  -->
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>Eat Am Are - AngularDart</title>
+    <link rel="stylesheet" href="public/css/style.css">
+  </head>
+  <body>
+    <!-- meal-list is selector -->
+    <main meal-list>
+        <h1>Eat Am Are</h1>
+        <h2>Just Eat What You Are</h2>
+        <!-- ng-model is MealCtrl.moment - word-token is custom directive -->
+        <input type="text" words-token ng-model="MealCtrl.moment" placeholder="What 's in your mind?" autofocus> 
+        <section>
+            <input type="checkbox" ng-model="onlypreferredprice"> Only preferred price
+            <input type="checkbox" ng-model="onlypreferredtime"> Only preferred time
+        </section>
+        <section>
+            <!-- meals-->
+            <section>
+                <!-- list meal-item via ng-repeat -->
+                <figure ng-repeat="meal in MealCtrl.meals">
+                    <img src="public/img/{{meal.image}}" alt="">
+                    <figcaption class="{{meal.verb}} v">
+                        <!-- preferredtime and preferredprice are custom filters -->
+                        {{meal.name | preferredtime:meal.time}}<br>
+                        {{meal.price | preferredprice}}
+                    </figcaption>
+                </figure>
+            </section>
+        </section>
+    </main>
+
+    <script type="application/dart" src="angulardart.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>

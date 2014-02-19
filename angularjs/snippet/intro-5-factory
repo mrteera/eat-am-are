@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="eatamareApp">
 <head>
-	<title>You Are What You Eat | Eat-Am-Are</title>
+	<title>Eat Am Are - AngularJS</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./custom/style.css">
 </head>
