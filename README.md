@@ -22,7 +22,11 @@ An introduction of AngularJS and AngularDart by sample small projects
 * Animation
 
 ##### AngularDart
-> Comming soon
+* ngBootstrap
+* NgController
+* Module 
+* NgFilter
+* NgDirective
 
 #### Author
 Suthat Ronglong
