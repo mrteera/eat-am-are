@@ -1,0 +1,33 @@
+git:
+-
+  repository : git@github.com:mrteera/eat-am-are.git
+  branch : master
+
+
+project_name:
+- eat-am-are
+
+master_host:
+- 127.0.0.1
+
+builder:
+-
+  name : slave-eatamare
+  password : eatamare
+
+mail_list:
+- webmaster@mrteera.com
+
+relation:
+  eat-am-are :
+  - slave-eatamare
+
+
+factory:
+  slave-eatamare:
+  -
+    command : wget http://autospinn.com/robots.txt`
+    workdir : eat-am-are
+  -
+    command : cp robots.txt burger.txt
+    workdir : eat-am-are
